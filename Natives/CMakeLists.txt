@@ -14,6 +14,7 @@ endif()
 
 include_directories(
   "."
+  "OceanUI"
   "external/AFNetworking/AFNetworking"
   "external/AFNetworking/UIKit+AFNetworking"
   "external/DBNumberedSlider/Classes"
@@ -153,6 +154,12 @@ target_link_libraries(audio_capture
 
 # Angel Aura Amethyst
 add_executable(AngelAuraAmethyst
+    OceanUI/OceanAppSetup.m
+    OceanUI/OceanHomeViewController.m
+    OceanUI/OceanNavigationStyling.m
+    OceanUI/OceanStylingCategories.m
+    OceanUI/OceanTheme.m
+
   dyld_bypass_validation.m
   dyld_patch_platform.m
   main.m
@@ -270,3 +277,5 @@ set_target_properties(AngelAuraAmethyst PROPERTIES
   MACOSX_BUNDLE TRUE
   MACOSX_FRAMEWORK_IDENTIFIER org.cmake.ExecutableTarget
   MACOSX_BUNDLE_INFO_PLIST "${CMAKE_CURRENT_LIST_DIR}/Info.plist")
+
+
