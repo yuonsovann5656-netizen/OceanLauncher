@@ -10,6 +10,10 @@
 static void OceanSwizzleMethod(Class cls, SEL origSel, SEL newSel) {
     Method origMethod = class_getInstanceMethod(cls, origSel);
     Method newMethod = class_getInstanceMethod(cls, newSel);
+    if (!origMethod || !newMethod) {
+        NSLog(@"[OceanLauncher] Failed to find methods for swizzling on %@", NSStringFromClass(cls));
+        return;
+    }
     if (class_addMethod(cls, origSel, method_getImplementation(newMethod), method_getTypeEncoding(newMethod))) {
         class_replaceMethod(cls, newSel, method_getImplementation(origMethod), method_getTypeEncoding(origMethod));
     } else {
@@ -28,39 +32,37 @@ static void OceanSwizzleMethod(Class cls, SEL origSel, SEL newSel) {
     // LauncherProfilesViewController
     Class profilesVC = NSClassFromString(@"LauncherProfilesViewController");
     if (profilesVC) {
-        OceanSwizzleMethod(profilesVC, @selector(viewDidLoad), @selector(ocean_viewDidLoad));
-        OceanSwizzleMethod(profilesVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_tableView:cellForRowAtIndexPath:));
+        OceanSwizzleMethod(profilesVC, @selector(viewDidLoad), @selector(ocean_profiles_viewDidLoad));
+        OceanSwizzleMethod(profilesVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_profiles_tableView:cellForRowAtIndexPath:));
     }
     
     // LauncherMenuViewController
     Class menuVC = NSClassFromString(@"LauncherMenuViewController");
     if (menuVC) {
-        OceanSwizzleMethod(menuVC, @selector(viewDidLoad), @selector(ocean_viewDidLoad));
-        OceanSwizzleMethod(menuVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_tableView:cellForRowAtIndexPath:));
+        OceanSwizzleMethod(menuVC, @selector(viewDidLoad), @selector(ocean_menu_viewDidLoad));
+        OceanSwizzleMethod(menuVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_menu_tableView:cellForRowAtIndexPath:));
     }
     
     // LauncherPreferencesViewController
     Class prefVC = NSClassFromString(@"LauncherPreferencesViewController");
     if (prefVC) {
-        OceanSwizzleMethod(prefVC, @selector(viewDidLoad), @selector(ocean_viewDidLoad));
-        OceanSwizzleMethod(prefVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_tableView:cellForRowAtIndexPath:));
+        OceanSwizzleMethod(prefVC, @selector(viewDidLoad), @selector(ocean_prefs_viewDidLoad));
+        OceanSwizzleMethod(prefVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_prefs_tableView:cellForRowAtIndexPath:));
     }
     
     // AccountListViewController
     Class accVC = NSClassFromString(@"AccountListViewController");
     if (accVC) {
-        OceanSwizzleMethod(accVC, @selector(viewDidLoad), @selector(ocean_viewDidLoad));
-        OceanSwizzleMethod(accVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_tableView:cellForRowAtIndexPath:));
+        OceanSwizzleMethod(accVC, @selector(viewDidLoad), @selector(ocean_account_viewDidLoad));
+        OceanSwizzleMethod(accVC, @selector(tableView:cellForRowAtIndexPath:), @selector(ocean_account_tableView:cellForRowAtIndexPath:));
     }
     
     // DownloadProgressViewController
     Class dlVC = NSClassFromString(@"DownloadProgressViewController");
     if (dlVC) {
-        OceanSwizzleMethod(dlVC, @selector(viewDidLoad), @selector(ocean_viewDidLoad));
+        OceanSwizzleMethod(dlVC, @selector(viewDidLoad), @selector(ocean_download_viewDidLoad));
     }
     
-    // Replace the default logo image in the asset catalog programmatically if needed,
-    // but we're relying on replacing the asset catalog directly.
     NSLog(@"[OceanLauncher] OceanTheme initialized and UI hooks installed.");
 }
 
