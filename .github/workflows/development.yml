@@ -63,6 +63,7 @@ jobs:
       - name: Build sideload IPA & TrollStore tIPA
         shell: bash
         run: |
+          set -Eeuo pipefail
           echo '#import <mach/mach.h>' | cat - Natives/JavaLauncher.m > temp && mv temp Natives/JavaLauncher.m
           JDK_BASE_PATH="${{ steps.setup-java.outputs.path }}"
           export PATH="$JDK_BASE_PATH/bin:/opt/homebrew/bin:$PATH"
@@ -78,10 +79,15 @@ jobs:
           export CXXFLAGS="-Wno-error=implicit-function-declaration -Wno-error=int-to-pointer-cast $CXXFLAGS"
           
           SIGN_FLAGS="CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="
-          # Only run package (removed dsym and slimmed)
-          gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 $SIGN_FLAGS 2> >(grep -v "vtool warning: code signature will be invalid" >&2)
-          
-          gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 TROLLSTORE_JIT_ENT=1 $SIGN_FLAGS 2> >(grep -v "vtool warning: code signature will be invalid" >&2)
+          # Build each package from a clean output directory so the second
+          # entitlement variant cannot reuse the first payload.
+          rm -rf artifacts
+          gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 $SIGN_FLAGS 2>&1 | tee /tmp/ocean-sideload-build.log
+          cp /tmp/ocean-sideload-build.log artifacts/ocean-sideload-build.log
+
+          rm -rf artifacts/Payload
+          gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 TROLLSTORE_JIT_ENT=1 $SIGN_FLAGS 2>&1 | tee /tmp/ocean-trollstore-build.log
+          cp /tmp/ocean-trollstore-build.log artifacts/ocean-trollstore-build.log
           for ipa in artifacts/com.oceanlauncher.minecraft-*.ipa artifacts/com.oceanlauncher.minecraft-*.tipa; do
             [ -f "$ipa" ] || continue
             unzip -p "$ipa" Payload/AngelAuraAmethyst.app/Info.plist > /tmp/ocean-info.plist
@@ -119,6 +125,7 @@ jobs:
         with:
           name: build-logs
           path: |
+            /tmp/ocean-*-build.log
             Natives/build/CMakeFiles/CMakeOutput.log
             Natives/build/CMakeFiles/CMakeError.log
           if-no-files-found: ignore
