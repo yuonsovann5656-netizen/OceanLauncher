@@ -1,4 +1,4 @@
-#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
+﻿#import <UniformTypeIdentifiers/UniformTypeIdentifiers.h>
 #import "authenticator/BaseAuthenticator.h"
 #import "AFNetworking.h"
 #import "ALTServerConnection.h"
@@ -7,6 +7,7 @@
 #import "JavaGUIViewController.h"
 #import "LauncherMenuViewController.h"
 #import "LauncherNavigationController.h"
+#import "OceanNavigationStyling.h"
 #import "LauncherPreferences.h"
 #import "MinecraftResourceDownloadTask.h"
 #import "MinecraftResourceUtils.h"
@@ -44,6 +45,7 @@ static void *ProgressObserverContext = &ProgressObserverContext;
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self ocean_applyTheme];
 
     if ([self respondsToSelector:@selector(setNeedsUpdateOfScreenEdgesDeferringSystemGestures)]) {
         [self setNeedsUpdateOfScreenEdgesDeferringSystemGestures];
@@ -533,3 +535,4 @@ static void *ProgressObserverContext = &ProgressObserverContext;
 }
 
 @end
+

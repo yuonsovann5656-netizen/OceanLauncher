@@ -1,4 +1,5 @@
-#import "AppDelegate.h"
+﻿#import "AppDelegate.h"
+#import "OceanAppSetup.h"
 #import "SceneDelegate.h"
 #import "ios_uikit_bridge.h"
 #import "utils.h"
@@ -14,6 +15,7 @@ extern dispatch_group_t fatalExitGroup;
 - (UISceneConfiguration *)application:(UIApplication *)application configurationForConnectingSceneSession:(UISceneSession *)connectingSceneSession options:(UISceneConnectionOptions *)options {
     // Called when a new scene session is being created.
     // Use this method to select a configuration to create the new scene with.
+    [OceanAppSetup initializeOceanTheme];
     return [[UISceneConfiguration alloc] initWithName:@"Default Configuration" sessionRole:connectingSceneSession.role];
 }
 
@@ -32,3 +34,4 @@ extern dispatch_group_t fatalExitGroup;
 }
 
 @end
+

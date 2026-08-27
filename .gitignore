@@ -4,6 +4,7 @@
 /JavaApp/.gradle
 /JavaApp/build
 /JavaApp/local_out
+/Natives/external/MobileGlues/.gradle
 /Natives/AngelAuraAmethyst
 /Natives/build
 .DS_Store

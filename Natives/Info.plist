@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<!-- Ocean Launcher — re-brand of Zenith Launcher / AngelAuraAmethyst / PojavLauncher -->
+	<!-- GPL-3.0: https://github.com/thenullastris/Zenith-Launcher/blob/main/LICENSE -->
 	<key>ALTDeviceID</key>
 	<string></string>
 	<key>CADisableMinimumFrameDurationOnPhone</key>
@@ -9,113 +11,56 @@
 	<key>CFBundleDevelopmentRegion</key>
 	<string>en</string>
 	<key>CFBundleDisplayName</key>
-	<string>Zenith Launcher</string>
+	<string>Ocean Launcher</string>
 	<key>CFBundleExecutable</key>
 	<string>AngelAuraAmethyst</string>
 	<key>CFBundleIcons</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>AppIcon-Dark</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIcon-Dark60x60</string>
-				</array>
-			</dict>
-			<key>AppIcon-Development</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIcon-Development60x60</string>
-				</array>
-			</dict>
-		</dict>
+		<dict/>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AppIcon-Light60x60</string>
+				<string>AppIcon60x60</string>
 			</array>
 			<key>CFBundleIconName</key>
-			<string>AppIcon-Light</string>
+			<string>AppIcon</string>
 		</dict>
 	</dict>
 	<key>CFBundleIcons~ipad</key>
 	<dict>
 		<key>CFBundleAlternateIcons</key>
-		<dict>
-			<key>AppIcon-Dark</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIcon-Dark60x60</string>
-					<string>AppIcon-Dark76x76</string>
-				</array>
-			</dict>
-			<key>AppIcon-Development</key>
-			<dict>
-				<key>CFBundleIconFiles</key>
-				<array>
-					<string>AppIcon-Development60x60</string>
-					<string>AppIcon-Development76x76</string>
-				</array>
-			</dict>
-		</dict>
+		<dict/>
 		<key>CFBundlePrimaryIcon</key>
 		<dict>
 			<key>CFBundleIconFiles</key>
 			<array>
-				<string>AppIcon-Light60x60</string>
-				<string>AppIcon-Light76x76</string>
+				<string>AppIcon60x60</string>
+				<string>AppIcon76x76</string>
 			</array>
 			<key>CFBundleIconName</key>
-			<string>AppIcon-Light</string>
+			<string>AppIcon</string>
 		</dict>
 	</dict>
 	<key>CFBundleIdentifier</key>
-	<string>com.thenullastris.zenithlauncher</string>
+	<string>com.oceanlauncher.minecraft</string>
 	<key>CFBundleInfoDictionaryVersion</key>
 	<string>6.0</string>
 	<key>CFBundleName</key>
-	<string>Zenith Launcher</string>
+	<string>OceanLauncher</string>
 	<key>CFBundlePackageType</key>
 	<string>APPL</string>
 	<key>CFBundleShortVersionString</key>
-	<string>1.0.3</string>
-	<key>CFBundleSignature</key>
-	<string>????</string>
-	<key>CFBundleURLTypes</key>
-	<array>
-		<dict>
-			<key>CFBundleURLName</key>
-			<string>com.thenullastris.zenithlauncher.urlscheme</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>amethyst</string>
-			</array>
-		</dict>
-	</array>
+	<string>1.0.0</string>
 	<key>CFBundleVersion</key>
-	<string>1.0.3</string>
-	<key>GCSupportedGameControllers</key>
-	<array>
-		<dict>
-			<key>ProfileName</key>
-			<string>ExtendedGamepad</string>
-		</dict>
-	</array>
-	<key>GCSupportsControllerUserInteraction</key>
-	<true/>
-	<key>GCSupportsGameMode</key>
-	<true/>
-	<key>LSApplicationCategoryType</key>
-	<string>public.app-category.games</string>
+	<string>1</string>
+	<key>ITSAppUsesNonExemptEncryption</key>
+	<false/>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
-		<string>filza</string>
-		<string>santander</string>
-		<string>shareddocuments</string>
+		<string>altstore</string>
+		<string>sidestore</string>
 	</array>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
@@ -123,14 +68,17 @@
 	<true/>
 	<key>MinimumOSVersion</key>
 	<string>14.0</string>
-	<key>NSBonjourServices</key>
-	<array>
-		<string>_altserver._tcp</string>
-	</array>
-	<key>NSLocalNetworkUsageDescription</key>
-	<string>Angel Aura Amethyst uses the local network to find and communicate with AltServer and LAN servers.</string>
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoads</key>
+		<true/>
+	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Ocean Launcher uses the camera for custom controls and in-game features.</string>
+	<key>NSFaceIDUsageDescription</key>
+	<string>Ocean Launcher uses Face ID to protect your account.</string>
 	<key>NSMicrophoneUsageDescription</key>
-	<string>Angel Aura Amethyst uses the microphone to enable support for voice chat mods.</string>
+	<string>Ocean Launcher uses the microphone for in-game audio features.</string>
 	<key>UIApplicationSceneManifest</key>
 	<dict>
 		<key>UIApplicationSupportsMultipleScenes</key>
@@ -146,58 +94,35 @@
 					<string>SceneDelegate</string>
 				</dict>
 			</array>
-			<key>UIWindowSceneSessionRoleExternalDisplay</key>
-			<array>
-				<dict>
-					<key>UISceneConfigurationName</key>
-					<string>External Display Configuration</string>
-					<key>UISceneDelegateClassName</key>
-					<string>SceneExternalDelegate</string>
-				</dict>
-			</array>
 		</dict>
 	</dict>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
-	<true/>
-	<key>UIBackgroundModes</key>
-	<array>
-		<string>fetch</string>
-	</array>
-	<key>UIDeviceFamily</key>
-	<array>
-		<integer>1</integer>
-		<integer>2</integer>
-		<integer>3</integer>
-	</array>
-	<key>UIFileSharingEnabled</key>
 	<true/>
 	<key>UILaunchStoryboardName</key>
 	<string>LaunchScreen</string>
 	<key>UIRequiredDeviceCapabilities</key>
 	<array>
 		<string>arm64</string>
-		<string>metal</string>
 	</array>
-	<key>UIStatusBarHidden</key>
+	<key>UIRequiresFullScreen</key>
 	<true/>
+	<key>UIStatusBarHidden</key>
+	<false/>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
 	<key>UISupportedInterfaceOrientations~ipad</key>
 	<array>
-		<string>UIInterfaceOrientationPortrait</string>
-		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 		<string>UIInterfaceOrientationLandscapeLeft</string>
 		<string>UIInterfaceOrientationLandscapeRight</string>
+		<string>UIInterfaceOrientationPortrait</string>
+		<string>UIInterfaceOrientationPortraitUpsideDown</string>
 	</array>
-	<key>UISupportsDocumentBrowser</key>
-	<true/>
-	<key>UIViewControllerBasedStatusBarAppearance</key>
-	<true/>
-	<key>UIWhitePointAdaptivityStyle</key>
-	<string>UIWhitePointAdaptivityStyleGame</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Dark</string>
 </dict>
 </plist>
