@@ -1,4 +1,4 @@
-// Ocean Launcher — a re-brand of Zenith Launcher / AngelAuraAmethyst / PojavLauncher
+﻿// Ocean Launcher â€” a re-brand of Zenith Launcher / AngelAuraAmethyst / PojavLauncher
 // Copyright (C) 2024 Ocean Launcher Contributors
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
@@ -8,7 +8,7 @@
 #import "OceanHomeViewController.h"
 #import "OceanTheme.h"
 
-// ── Recent Profile Cell ───────────────────────────────────────────────────────
+// â”€â”€ Recent Profile Cell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 @interface OceanRecentProfileCell : UICollectionViewCell
 @property(nonatomic, strong) UIImageView *iconView;
@@ -48,12 +48,12 @@
 
 - (void)configureWithProfile:(NSDictionary *)profile {
     _nameLabel.text = profile[@"name"] ?: @"Default";
-    _versionLabel.text = profile[@"lastVersionId"] ?: @"—";
+    _versionLabel.text = profile[@"lastVersionId"] ?: @"â€”";
 }
 
 @end
 
-// ── News Card Cell ────────────────────────────────────────────────────────────
+// â”€â”€ News Card Cell â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 @interface OceanNewsCell : UITableViewCell
 @property(nonatomic, strong) UILabel *titleLabel;
@@ -121,7 +121,7 @@
 
 @end
 
-// ── OceanHomeViewController ───────────────────────────────────────────────────
+// â”€â”€ OceanHomeViewController â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 @interface OceanHomeViewController () <UICollectionViewDataSource, UICollectionViewDelegate, UITableViewDataSource, UITableViewDelegate>
 
@@ -144,12 +144,12 @@
 @property(nonatomic, strong) UIActivityIndicatorView *playSpinner;
 
 // Recently played section
-@property(nonatomic, strong) UILabel *recentHeaderLabel;
+@property(nonatomic, strong) UIView *recentHeaderLabel;
 @property(nonatomic, strong) UICollectionView *recentProfilesCV;
 @property(nonatomic, strong) NSArray<NSDictionary *> *recentProfiles;
 
 // News section
-@property(nonatomic, strong) UILabel *newsHeaderLabel;
+@property(nonatomic, strong) UIView *newsHeaderLabel;
 @property(nonatomic, strong) UITableView *newsTableView;
 @property(nonatomic, strong) NSArray<NSDictionary *> *newsItems;
 
@@ -182,7 +182,7 @@
     [self _layoutContent];
 }
 
-// ── Scroll View Setup ─────────────────────────────────────────────────────────
+// â”€â”€ Scroll View Setup â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_setupScrollView {
     _scrollView = [[UIScrollView alloc] initWithFrame:self.view.bounds];
@@ -197,7 +197,7 @@
     [_scrollView addSubview:_contentView];
 }
 
-// ── Player Card ───────────────────────────────────────────────────────────────
+// â”€â”€ Player Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_setupPlayerCard {
     CGFloat w = MIN(self.view.bounds.size.width - 32, 600);
@@ -237,7 +237,7 @@
     [_accountTypePill addSubview:_accountTypeLabel];
 }
 
-// ── Version Card ──────────────────────────────────────────────────────────────
+// â”€â”€ Version Card â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_setupVersionCard {
     CGFloat w = MIN(self.view.bounds.size.width - 32, 600);
@@ -247,7 +247,7 @@
     
     // MC icon
     UILabel *mcIcon = [[UILabel alloc] initWithFrame:CGRectMake(14, 16, 32, 32)];
-    mcIcon.text = @"⛏";
+    mcIcon.text = @"â›";
     mcIcon.font = [UIFont systemFontOfSize:22];
     [_versionCard addSubview:mcIcon];
     
@@ -283,7 +283,7 @@
     [_versionCard addSubview:_changeVersionButton];
 }
 
-// ── PLAY Button ───────────────────────────────────────────────────────────────
+// â”€â”€ PLAY Button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_setupPlayButton {
     _playButton = [OceanButton playButton];
@@ -302,7 +302,7 @@
     [_playButton addSubview:_playSpinner];
 }
 
-// ── Recent Profiles ───────────────────────────────────────────────────────────
+// â”€â”€ Recent Profiles â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_setupRecentProfiles {
     _recentHeaderLabel = [[OceanTheme shared] makeSectionHeader:@"Recently Played"];
@@ -328,7 +328,7 @@
     _recentProfiles = @[];
 }
 
-// ── News Section ──────────────────────────────────────────────────────────────
+// â”€â”€ News Section â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_setupNewsSection {
     _newsHeaderLabel = [[OceanTheme shared] makeSectionHeader:@"News & Updates"];
@@ -358,7 +358,7 @@
     [_newsTableView reloadData];
 }
 
-// ── Layout ────────────────────────────────────────────────────────────────────
+// â”€â”€ Layout â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_layoutContent {
     CGFloat w = _contentView.bounds.size.width;
@@ -375,14 +375,14 @@
     _recentHeaderLabel.frame = CGRectMake(0, safeTop + 278, w, 40);
     _recentProfilesCV.frame = CGRectMake(0, safeTop + 316, w, 76);
     _newsHeaderLabel.frame = CGRectMake(0, safeTop + 408, w, 40);
-    _newsTableView.frame = CGRectMake(0, safeTop + 448, w, CGFloat(_newsItems.count) * 86.0);
+    _newsTableView.frame = CGRectMake(0, safeTop + 448, w, (CGFloat)(_newsItems.count) * 86.0);
     
-    CGFloat totalHeight = safeTop + 448 + CGFloat(_newsItems.count) * 86.0 + 40;
+    CGFloat totalHeight = safeTop + 448 + (CGFloat)(_newsItems.count) * 86.0 + 40;
     _contentView.frame = CGRectMake(0, 0, w, totalHeight);
     _scrollView.contentSize = CGSizeMake(w, totalHeight);
 }
 
-// ── Public API ────────────────────────────────────────────────────────────────
+// â”€â”€ Public API â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)updateWithUsername:(NSString *)username
                  avatarURL:(nullable NSString *)avatarURL
@@ -454,7 +454,7 @@
         [[OceanTheme shared] startPulseAnimation:_playButton color:OceanColorAccent];
         // Restore attributed title
         NSMutableAttributedString *title = [[NSMutableAttributedString alloc] init];
-        NSAttributedString *icon = [[NSAttributedString alloc] initWithString:@"▶  " attributes:@{
+        NSAttributedString *icon = [[NSAttributedString alloc] initWithString:@"â–¶  " attributes:@{
             NSForegroundColorAttributeName: OceanColorBackground,
             NSFontAttributeName: [UIFont systemFontOfSize:18.0 weight:UIFontWeightBold]
         }];
@@ -469,7 +469,7 @@
     }
 }
 
-// ── Button Actions ────────────────────────────────────────────────────────────
+// â”€â”€ Button Actions â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (void)_playTapped {
     if (self.onPlayTapped) self.onPlayTapped();
@@ -479,7 +479,7 @@
     if (self.onVersionTapped) self.onVersionTapped();
 }
 
-// ── UICollectionView DataSource/Delegate ──────────────────────────────────────
+// â”€â”€ UICollectionView DataSource/Delegate â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (NSInteger)collectionView:(UICollectionView *)cv numberOfItemsInSection:(NSInteger)section {
     return MAX(_recentProfiles.count, 1); // Show placeholder if empty
@@ -502,7 +502,7 @@
     }
 }
 
-// ── UITableView DataSource/Delegate (News) ────────────────────────────────────
+// â”€â”€ UITableView DataSource/Delegate (News) â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 - (NSInteger)tableView:(UITableView *)tv numberOfRowsInSection:(NSInteger)section {
     return _newsItems.count;
@@ -520,3 +520,5 @@
 }
 
 @end
+
+
