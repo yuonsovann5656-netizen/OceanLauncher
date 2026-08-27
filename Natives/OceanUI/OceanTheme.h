@@ -1,4 +1,4 @@
-// Ocean Launcher — a re-brand of Zenith Launcher / AngelAuraAmethyst / PojavLauncher
+﻿// Ocean Launcher â€” a re-brand of Zenith Launcher / AngelAuraAmethyst / PojavLauncher
 // Copyright (C) 2024 Ocean Launcher Contributors
 // SPDX-License-Identifier: GPL-3.0-or-later
 //
@@ -17,22 +17,23 @@
 // Original project licensed under GPL-3.0
 
 #import <UIKit/UIKit.h>
+#import <QuartzCore/QuartzCore.h>
 
 NS_ASSUME_NONNULL_BEGIN
 
-// ── Ocean Color Constants ─────────────────────────────────────────────────────
+// â”€â”€ Ocean Color Constants â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
-/// Ocean dark background — primary screen background
+/// Ocean dark background â€” primary screen background
 extern UIColor *OceanColorBackground;
-/// Ocean surface — slightly lighter, for nav bars and panels
+/// Ocean surface â€” slightly lighter, for nav bars and panels
 extern UIColor *OceanColorSurface;
-/// Ocean card — glassmorphism card base
+/// Ocean card â€” glassmorphism card base
 extern UIColor *OceanColorCard;
-/// Ocean card border — subtle glow border for glass cards
+/// Ocean card border â€” subtle glow border for glass cards
 extern UIColor *OceanColorCardBorder;
-/// Ocean primary accent — ocean blue
+/// Ocean primary accent â€” ocean blue
 extern UIColor *OceanColorAccent;
-/// Ocean secondary accent — teal glow
+/// Ocean secondary accent â€” teal glow
 extern UIColor *OceanColorTeal;
 /// Ocean text primary
 extern UIColor *OceanColorTextPrimary;
@@ -45,7 +46,7 @@ extern UIColor *OceanColorSuccess;
 /// Ocean overlay (semi-transparent dark)
 extern UIColor *OceanColorOverlay;
 
-// ── Ocean Theme Manager ───────────────────────────────────────────────────────
+// â”€â”€ Ocean Theme Manager â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /// Central theming singleton for Ocean Launcher.
 /// Provides colors, glassmorphism helpers, and UIAppearance application.
@@ -90,7 +91,7 @@ extern UIColor *OceanColorOverlay;
 
 @end
 
-// ── Ocean Button ──────────────────────────────────────────────────────────────
+// â”€â”€ Ocean Button â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /// Pre-styled Ocean Launcher button.
 @interface OceanButton : UIButton
@@ -109,7 +110,7 @@ extern UIColor *OceanColorOverlay;
 
 @end
 
-// ── Ocean Card View ───────────────────────────────────────────────────────────
+// â”€â”€ Ocean Card View â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /// A UIView subclass that renders as a glassmorphism card.
 @interface OceanCardView : UIView
@@ -125,12 +126,12 @@ extern UIColor *OceanColorOverlay;
 
 @end
 
-// ── Ocean Progress Bar ────────────────────────────────────────────────────────
+// â”€â”€ Ocean Progress Bar â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 
 /// Ocean-styled animated progress bar.
 @interface OceanProgressView : UIView
 
-/// Current progress (0.0 – 1.0).
+/// Current progress (0.0 â€“ 1.0).
 @property(nonatomic) float progress;
 
 /// Subtitle/status label shown below the bar.
@@ -142,3 +143,4 @@ extern UIColor *OceanColorOverlay;
 @end
 
 NS_ASSUME_NONNULL_END
+
