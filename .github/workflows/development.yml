@@ -83,11 +83,18 @@ jobs:
           # entitlement variant cannot reuse the first payload.
           rm -rf artifacts
           mkdir -p artifacts
+          echo '::group::Clean previous build outputs'
+          gmake clean
+          echo '::endgroup::'
+          echo '::group::Build sideload IPA'
           gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 $SIGN_FLAGS 2>&1 | tee /tmp/ocean-sideload-build.log
+          echo '::endgroup::'
           cp /tmp/ocean-sideload-build.log artifacts/ocean-sideload-build.log
 
           rm -rf artifacts/Payload
+          echo '::group::Build TrollStore tIPA'
           gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 TROLLSTORE_JIT_ENT=1 $SIGN_FLAGS 2>&1 | tee /tmp/ocean-trollstore-build.log
+          echo '::endgroup::'
           cp /tmp/ocean-trollstore-build.log artifacts/ocean-trollstore-build.log
           for ipa in artifacts/com.oceanlauncher.minecraft-*.ipa artifacts/com.oceanlauncher.minecraft-*.tipa; do
             [ -f "$ipa" ] || continue
