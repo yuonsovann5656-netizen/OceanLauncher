@@ -87,8 +87,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v5
         with:
-          name: com.thenullastris.zenithlauncher-${{ matrix.platform_name }}
-          path: artifacts/com.thenullastris.zenithlauncher-*-${{ matrix.platform_name }}.ipa
+          name: com.oceanlauncher.minecraft-${{ matrix.platform_name }}
+          path: artifacts/com.oceanlauncher.minecraft-*-${{ matrix.platform_name }}.ipa
           retention-days: 90
           if-no-files-found: warn
           compression-level: 0
@@ -97,8 +97,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v5
         with:
-          name: com.thenullastris.zenithlauncher-${{ matrix.platform_name }}-trollstore
-          path: artifacts/com.thenullastris.zenithlauncher-*-${{ matrix.platform_name }}-trollstore.tipa
+          name: com.oceanlauncher.minecraft-${{ matrix.platform_name }}-trollstore
+          path: artifacts/com.oceanlauncher.minecraft-*-${{ matrix.platform_name }}-trollstore.tipa
           retention-days: 90
           if-no-files-found: warn
           compression-level: 0

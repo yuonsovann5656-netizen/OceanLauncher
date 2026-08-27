@@ -82,6 +82,12 @@ jobs:
           gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 $SIGN_FLAGS 2> >(grep -v "vtool warning: code signature will be invalid" >&2)
           
           gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 TROLLSTORE_JIT_ENT=1 $SIGN_FLAGS 2> >(grep -v "vtool warning: code signature will be invalid" >&2)
+          for ipa in artifacts/com.oceanlauncher.minecraft-*.ipa artifacts/com.oceanlauncher.minecraft-*.tipa; do
+            [ -f "$ipa" ] || continue
+            unzip -p "$ipa" Payload/AngelAuraAmethyst.app/Info.plist > /tmp/ocean-info.plist
+            /usr/libexec/PlistBuddy -c "Print :CFBundleIdentifier" /tmp/ocean-info.plist | grep -Fx 'com.oceanlauncher.minecraft'
+            unzip -l "$ipa" | grep -q 'Payload/AngelAuraAmethyst.app/AngelAuraAmethyst'
+          done
       - name: List artifacts
         if: always()
         run: ls -la artifacts/ || true
@@ -90,8 +96,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: com.thenullastris.zenithlauncher-ios-trollstore
-          path: artifacts/com.thenullastris.zenithlauncher-*-ios-trollstore.tipa
+          name: com.oceanlauncher.minecraft-ios-trollstore
+          path: artifacts/com.oceanlauncher.minecraft-*-ios-trollstore.tipa
           retention-days: 1
           if-no-files-found: warn
           compression-level: 0
@@ -100,8 +106,8 @@ jobs:
         if: always()
         uses: actions/upload-artifact@v6
         with:
-          name: com.thenullastris.zenithlauncher-ios
-          path: artifacts/com.thenullastris.zenithlauncher-*-ios.ipa
+          name: com.oceanlauncher.minecraft-ios
+          path: artifacts/com.oceanlauncher.minecraft-*-ios.ipa
           retention-days: 1
           if-no-files-found: warn
           compression-level: 0
