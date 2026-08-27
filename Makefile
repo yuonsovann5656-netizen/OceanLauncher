@@ -159,7 +159,8 @@ METHOD_PACKAGE = \
 # Function to download and unpack Java runtimes.
 METHOD_JAVA_UNPACK = \
 	cd $(SOURCEDIR)/depends; \
-	if [ ! -f "java-$(1)-openjdk/release" ] && [ ! -f "$(ls jre$(1)-*.tar.xz)" ]; then \
+	archive_found=0; for archive in jre$(1)-*.tar.xz; do if [ -f "$$archive" ]; then archive_found=1; break; fi; done; \
+	if [ ! -f "java-$(1)-openjdk/release" ] && [ "$$archive_found" = '0' ]; then \
 		if [ "$(RUNNER)" != "1" ]; then \
 			wget '$(2)' -q --show-progress -O jre$(1)-ios-aarch64.zip; \
 			unzip jre$(1)-ios-aarch64.zip && rm jre$(1)-ios-aarch64.zip; \
@@ -290,7 +291,7 @@ jre: native
 	$(call METHOD_JAVA_UNPACK,8,'https://assets.angelauramc.dev/openjdk/ios-arm64/jre8-ios-aarch64.zip'); \
 	$(call METHOD_JAVA_UNPACK,17,'https://assets.angelauramc.dev/openjdk/ios-arm64/jre17-ios-aarch64.zip'); \
 	$(call METHOD_JAVA_UNPACK,21,'https://assets.angelauramc.dev/openjdk/ios-arm64/jre21-ios-aarch64.zip'); \
-	if [ -f "$(ls jre*.tar.xz)" ]; then rm $(SOURCEDIR)/depends/jre*.tar.xz; fi; \
+	for archive in jre*.tar.xz; do if [ -f "$$archive" ]; then rm -f "$$archive"; fi; done; \
 	cd $(SOURCEDIR); \
 	bash $(SOURCEDIR)/scripts/build_jre25.sh; \
 	true; \

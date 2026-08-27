@@ -82,6 +82,7 @@ jobs:
           # Build each package from a clean output directory so the second
           # entitlement variant cannot reuse the first payload.
           rm -rf artifacts
+          mkdir -p artifacts
           gmake -j$(sysctl -n hw.ncpu) package PLATFORM=2 $SIGN_FLAGS 2>&1 | tee /tmp/ocean-sideload-build.log
           cp /tmp/ocean-sideload-build.log artifacts/ocean-sideload-build.log
 
