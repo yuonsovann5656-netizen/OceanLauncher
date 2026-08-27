@@ -75,8 +75,8 @@ jobs:
           export CODE_SIGN_IDENTITY=""
           
           # FIXED: Added -Wno-error=int-to-pointer-cast to prevent 64-bit casting warnings from crashing the compiler
-          export CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=int-to-pointer-cast $CFLAGS"
-          export CXXFLAGS="-Wno-error=implicit-function-declaration -Wno-error=int-to-pointer-cast $CXXFLAGS"
+          export CFLAGS="-Wno-error=implicit-function-declaration -Wno-error=int-to-pointer-cast ${CFLAGS:-}"
+          export CXXFLAGS="-Wno-error=implicit-function-declaration -Wno-error=int-to-pointer-cast ${CXXFLAGS:-}"
           
           SIGN_FLAGS="CODE_SIGNING_ALLOWED=NO CODE_SIGNING_REQUIRED=NO CODE_SIGN_IDENTITY="
           # Build each package from a clean output directory so the second
